@@ -81,6 +81,11 @@ body::before {
     font-size: 24px;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
+    -moz-appearance: textfield;
+}
+
+.container__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .container__botoes {
