@@ -136,6 +136,10 @@ h1 {
     margin-top: 2rem;
 }
 
+.error {
+    color: red;
+}
+
 button:disabled {
     background-color: gray;
 }

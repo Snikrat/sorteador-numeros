@@ -6,18 +6,29 @@ function sortear() {
     let sorteados = [];
     let numero;
 
-    for (let i = 0; i < quantidade; i++) {
-        numero = obterNumeroAleatorio(de, ate);
 
-        while (sorteados.includes(numero)) {
+    if (quantidade > de && ate) {
+        resultado.innerHTML = `<label class="texto__paragrafo"><span class="error" >[ERROR]</span> Quantidade de número(s) superior aos campos "de" e "até".</label>`;
+
+        document.getElementById('quantidade').value = '';
+        document.getElementById('de').value = '';
+        document.getElementById('ate').value = '';
+        
+    } else {
+        for (let i = 0; i < quantidade; i++) {
             numero = obterNumeroAleatorio(de, ate);
-        }
-        sorteados.push(numero);
-    }
 
-    let resultado = document.getElementById('resultado');
-    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
-    alterarStatusBotao()
+            while (sorteados.includes(numero)) {
+                numero = obterNumeroAleatorio(de, ate);
+            }
+            sorteados.push(numero);
+        }
+
+
+        let resultado = document.getElementById('resultado');
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
+        alterarStatusBotao()
+    }
 }
 
 function obterNumeroAleatorio(min, max) {
@@ -39,6 +50,6 @@ function reiniciar() {
     document.getElementById('quantidade').value = '';
     document.getElementById('de').value = '';
     document.getElementById('ate').value = '';
-    document.getElementById('resultado').innerHTML= '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
+    document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
     alterarStatusBotao();
 }
